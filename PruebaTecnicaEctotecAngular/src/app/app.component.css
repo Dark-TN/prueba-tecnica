@@ -1,0 +1,16 @@
+.main{
+    width: 90%;
+    margin: auto;
+}
+
+.header-container{
+    background-color: #09E709;
+    margin: 5px;
+    border-radius: 40px;
+}
+
+.header-container h1{
+    color: white;
+    margin: 3rem;
+    font-size: 80px;
+}

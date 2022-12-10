@@ -1,0 +1,74 @@
+<div class="main">
+  <div class="row header-container mb-5">
+    <div class="col-md-8 d-flex justify-content-start">
+      <h1>Green Leaves</h1>
+    </div>
+    <div class="col-md-4 d-flex justify-content-end">
+      <img src="assets/img/green-leaf.png" width="300"/>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group row m-2">
+      <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="nombre" class="form-control" id="inputNombre" name="nombre">
+      </div>
+    </div>
+    <div class="form-group row m-2">
+      <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
+      <div class="col-sm-10">
+        <input type="email" [(ngModel)]="correoElectronico" class="form-control" id="inputEmail" name="correo">
+      </div>
+    </div>
+    <div class="form-group row m-2">
+      <label for="inputTelefono" class="col-sm-2 col-form-label">Teléfono</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="telefono" class="form-control" id="inputTelefono" name="telefono">
+      </div>
+    </div>
+    <div class="form-group row m-2">
+      <label for="inputFecha" class="col-sm-2 col-form-label">Fecha</label>
+      <div class="col-sm-10">
+
+        <mat-form-field appearance="fill">
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" (dateChange)="addEvent('change', $event)" id="inputFecha">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+    </div>
+    <div class="form-group row m-2">
+      <label for="selectCiudadEstado" class="col-sm-2 col-form-label">Ciudad y Estado</label>
+      <div class="col-sm-10">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input type="text"
+                 matInput
+                 [formControl]="autocompleteControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)='selectOption($event)'>
+            <mat-option *ngFor="let option of filteredOptions" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-group row m-2">
+      <div class="col-sm-12">
+        <re-captcha (resolved)="resolved($event)" siteKey="6Le6P20jAAAAAJIzuCbFxRbltu9mmRAtOygCGS2F"></re-captcha>
+      </div>
+    </div>
+    <div class="form-group row m-2">
+      <div class="col-sm-12 text-center">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
+
+
